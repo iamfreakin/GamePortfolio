@@ -1,0 +1,38 @@
+[
+  {
+    "file": "frame-010.jpg",
+    "source_seconds": 10
+  },
+  {
+    "file": "frame-035.jpg",
+    "source_seconds": 35
+  },
+  {
+    "file": "frame-060.jpg",
+    "source_seconds": 60
+  },
+  {
+    "file": "frame-085.jpg",
+    "source_seconds": 85
+  },
+  {
+    "file": "frame-110.jpg",
+    "source_seconds": 110
+  },
+  {
+    "file": "frame-135.jpg",
+    "source_seconds": 135
+  },
+  {
+    "file": "frame-160.jpg",
+    "source_seconds": 160
+  },
+  {
+    "file": "frame-185.jpg",
+    "source_seconds": 185
+  },
+  {
+    "file": "frame-210.jpg",
+    "source_seconds": 210
+  }
+]

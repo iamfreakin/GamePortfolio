@@ -15,6 +15,8 @@
 | 서브 | Project-Wings-Chaos-Room | Unreal Engine 5.6 C++ 프로토타입 | 물리 비행, 속성 상성, Chaos 파괴 | [문서](projects/Project-Wings-Chaos-Room.md) | [iamfreakin/Project-Wings-Chaos-Room](https://github.com/iamfreakin/Project-Wings-Chaos-Room) |
 | 서브 | PolyDrive | C++ 콘솔 프로젝트 | 다형성, `unique_ptr` 소유권, 객체 생명주기 | [문서](projects/PolyDrive.md) | [iamfreakin/PolyDrive](https://github.com/iamfreakin/PolyDrive) |
 
+| 기업연계 | GyroVR | Unreal Engine 차량 연출 프로젝트 | 차량 경로 추종, C++ 플러그인, 시퀀서 자동화 | [문서](projects/GyroVR.md) | [상세 페이지](website/projects/gyrovr/index.html) |
+
 ## Focus
 
 - 문제를 먼저 정의하고, 기능보다 구조와 재현 가능한 결과를 우선합니다.
@@ -37,3 +39,14 @@
 
 - `NeuronGCC/Reclaisle`는 팀 프로젝트 저장소입니다. 접근 권한이 없는 환경에서는 저장소가 보이지 않을 수 있습니다.
 - 각 프로젝트 저장소의 README는 포트폴리오 허브와 같은 구조로 점진적으로 정리합니다.
+
+## Portfolio Website
+
+프로젝트별 간단한 설명, 영상 또는 상세 페이지 미리보기, 개별 프로젝트 바로가기를 제공하는 정적 홈페이지입니다. 원본의 프로필·경력·역량·기술·학력 등 프로젝트 외 영역은 유지했습니다.
+
+- 시작 파일: [website/index.html](website/index.html)
+- 이어서 작업하기: [HANDOFF.md](HANDOFF.md)
+- 설치 없이 `website/index.html`을 브라우저로 열 수 있습니다.
+- 로컬 서버를 사용할 경우 저장소 루트에서 `python -m http.server 8000 --directory website`를 실행하고 `http://localhost:8000`을 엽니다.
+
+GyroVR 영상은 전체 길이를 유지한 960×540 웹용 압축본입니다. 595MB 원본 활동 영상과 개인 활동일지·검증 백업은 저장소에 포함하지 않습니다.

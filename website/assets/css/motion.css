@@ -1,0 +1,101 @@
+/* =========================================================
+   모션 프리셋
+   ---------------------------------------------------------
+   요소에 data-reveal="프리셋이름" 을 달면, 화면에 들어올 때
+   motion.js 가 .is-in 클래스를 붙이고 아래 전환이 실행됩니다.
+
+   새 프리셋 추가 방법
+     .motion-ready [data-reveal="내프리셋"]:not(.is-in) { 시작 상태 }
+   한 줄이면 됩니다. 끝 상태는 원래 스타일(= .is-in)이 그대로 쓰입니다.
+
+   타이밍 조절
+     data-reveal-delay="120"  → 이 요소만 120ms 늦게
+     data-stagger="60"        → 자식 [data-reveal] 들을 60ms 간격으로 차례대로
+     data-reveal-repeat       → 화면에서 나가면 다시 숨겼다가 들어올 때 또 재생
+   ========================================================= */
+
+.motion-ready [data-reveal] {
+  transition:
+    opacity var(--dur) var(--ease-out),
+    transform var(--dur) var(--ease-out),
+    filter var(--dur) var(--ease-out);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+/* ---------- 기본 프리셋 ---------- */
+.motion-ready [data-reveal="fade"]:not(.is-in)       { opacity: 0; }
+.motion-ready [data-reveal="fade-up"]:not(.is-in)    { opacity: 0; transform: translateY(var(--reveal-distance)); }
+.motion-ready [data-reveal="fade-down"]:not(.is-in)  { opacity: 0; transform: translateY(calc(var(--reveal-distance) * -1)); }
+.motion-ready [data-reveal="fade-left"]:not(.is-in)  { opacity: 0; transform: translateX(var(--reveal-distance)); }
+.motion-ready [data-reveal="fade-right"]:not(.is-in) { opacity: 0; transform: translateX(calc(var(--reveal-distance) * -1)); }
+.motion-ready [data-reveal="scale-in"]:not(.is-in)   { opacity: 0; transform: scale(0.96); }
+.motion-ready [data-reveal="blur-in"]:not(.is-in)    { opacity: 0; filter: blur(var(--reveal-blur)); }
+
+/* 사진: 살짝 확대된 상태에서 제자리로 + 모서리 강조선이 그려짐 */
+.motion-ready [data-reveal="portrait"]:not(.is-in) { opacity: 0; transform: scale(1.03); }
+.motion-ready [data-reveal="portrait"]::after {
+  transform-origin: left bottom;
+  transition: transform var(--dur-slow) var(--ease-out) calc(var(--reveal-delay, 0ms) + 200ms);
+}
+.motion-ready [data-reveal="portrait"]:not(.is-in)::after { transform: scale(0); }
+
+/* 섹션 상단 강조선: 요소 자체는 그대로, ::before 선만 왼쪽에서 자라남 */
+.motion-ready [data-reveal="rule"]::before {
+  transform-origin: left center;
+  transition: transform var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms);
+}
+.motion-ready [data-reveal="rule"]:not(.is-in)::before { transform: scaleX(0); }
+
+/* 왼쪽 세로선(인용문 등)이 위에서 아래로 그려짐 */
+.motion-ready [data-reveal="bar"] {
+  border-left-color: transparent;
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-repeat: no-repeat;
+  background-position: -2px 0;
+  background-size: 2px 100%;
+  transition:
+    opacity var(--dur) var(--ease-out),
+    background-size var(--dur-slow) var(--ease-out);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.motion-ready [data-reveal="bar"]:not(.is-in) { opacity: 0; background-size: 2px 0; }
+
+/* ---------- 상단 버튼: 첫 로드 때 한 번 ---------- */
+@keyframes toolbar-in {
+  from { opacity: 0; transform: translate(-50%, -8px); }
+  to   { opacity: 1; transform: translate(-50%, 0); }
+}
+.motion-ready .toolbar { animation: toolbar-in var(--dur) var(--ease-out) 200ms both; }
+
+/* ---------- 움직임 줄이기 설정 존중 ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .motion-ready [data-reveal],
+  .motion-ready [data-reveal]::before,
+  .motion-ready [data-reveal]::after,
+  .motion-ready .toolbar {
+    transition: none !important;
+    animation: none !important;
+  }
+  .motion-ready [data-reveal]:not(.is-in) {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+  .motion-ready [data-reveal]:not(.is-in)::before,
+  .motion-ready [data-reveal]:not(.is-in)::after { transform: none !important; }
+  .motion-ready [data-reveal="bar"]:not(.is-in) { background-size: 2px 100% !important; }
+}
+
+/* ---------- 인쇄할 때는 모두 보이게 ---------- */
+@media print {
+  .motion-ready [data-reveal],
+  .motion-ready [data-reveal]:not(.is-in) {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+  .motion-ready [data-reveal]::before,
+  .motion-ready [data-reveal]::after { transform: none !important; }
+  .motion-ready [data-reveal="bar"] { background-size: 2px 100% !important; }
+}

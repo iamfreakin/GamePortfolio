@@ -1,0 +1,8 @@
+.demo-video { display:block; width:100%; height:auto; aspect-ratio:16/9; background:#101010; border:1px solid var(--rule); border-radius:3px; }
+.media-note { color:var(--muted); font-size:12px; line-height:1.7; margin:12px 0 20px; }
+.scene-gallery { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; }
+.scene-gallery figure { margin:0; min-width:0; }
+.scene-gallery img { display:block; width:100%; height:auto; aspect-ratio:16/9; object-fit:cover; border:1px solid var(--rule); }
+.scene-gallery figcaption { font-size:11px; color:var(--muted); margin-top:7px; }
+@media(max-width:580px) { .scene-gallery {grid-template-columns:1fr;} .scene-gallery figcaption {font-size:12px;} }
+@media print { .demo-video {display:none;} .scene-gallery {grid-template-columns:repeat(3,minmax(0,1fr));} .scene-gallery figure {break-inside:avoid;} }

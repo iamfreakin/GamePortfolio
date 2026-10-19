@@ -1,0 +1,16 @@
+# Local editor and OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+node_modules/
+__pycache__/
+
+# Private source logs and local backups
+*.hwp
+*.hwpx
+90_근거자료/
+*.zip
+.env
+.env.*
