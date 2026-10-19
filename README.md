@@ -50,3 +50,7 @@
 - 로컬 서버를 사용할 경우 저장소 루트에서 `python -m http.server 8000 --directory website`를 실행하고 `http://localhost:8000`을 엽니다.
 
 GyroVR 영상은 전체 길이를 유지한 960×540 웹용 압축본입니다. 595MB 원본 활동 영상과 개인 활동일지·검증 백업은 저장소에 포함하지 않습니다.
+
+## Next Work
+
+프로젝트를 하나씩 실행하고 필요한 수정·촬영을 마친 뒤 포트폴리오에 반영합니다. [작업 계획](PORTFOLIO_PLAN.md), [촬영 체크리스트](CAPTURE_CHECKLIST.md), [진행 기록](PROJECT_WORKLOG.md), [Claude 공유 문서](CLAUDE_HANDOFF.md)에 이어서 기록합니다.

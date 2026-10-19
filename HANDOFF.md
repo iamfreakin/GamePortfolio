@@ -27,3 +27,10 @@ GyroVR은 영상 미리보기, 다른 프로젝트는 개별 상세 페이지를
 website/assets/video/Seq_Master_1015.mp4는 전체 3분 54.3초를 담은 960×540 압축본입니다. 595MB 원본과 원본 활동일지는 이 저장소에 포함하지 않았습니다. 로컬 디스크에서 사용한 절대 경로 없이 폴더 안의 상대 경로로 연결했습니다.
 
 이번 작업은 소스 커밋과 푸시입니다. GitHub Pages 등의 호스팅 설정은 추가하지 않았습니다.
+
+## 프로젝트 보강 작업
+
+- [프로젝트별 작업 계획](PORTFOLIO_PLAN.md)
+- [스크린샷과 영상 촬영 체크리스트](CAPTURE_CHECKLIST.md)
+- [현재 상태와 세션 기록](PROJECT_WORKLOG.md)
+- [Claude와의 공유 인계](CLAUDE_HANDOFF.md)
