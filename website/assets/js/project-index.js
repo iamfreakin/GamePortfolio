@@ -4,8 +4,19 @@
     return h.section(s, (s.items || []).map(function (p) {
       var media = p.preview || {};
       var preview = media.poster ? '<div class="project-preview"><button class="preview-trigger" type="button" data-preview-id="' + h.esc(p.id) + '" aria-label="' + h.esc(p.name) + ' 영상 미리보기"><img src="' + h.esc(media.poster) + '" alt="' + h.esc(p.name) + ' 대표 장면" loading="lazy"><span class="preview-play" aria-hidden="true">▶</span><span class="preview-label">영상 미리보기</span></button><p class="preview-caption">' + h.esc(media.caption || '') + '</p></div>' : '<div class="project-preview"><button class="page-preview-trigger" type="button" data-preview-id="' + h.esc(p.id) + '"><span class="page-preview-kicker">PROJECT PREVIEW</span><strong>' + h.esc(p.name) + '</strong><span>' + h.esc(p.role || '') + '</span><span class="page-preview-action">페이지 미리보기 ↗</span></button></div>';
-      return '<article class="project project-summary" id="' + h.esc(p.id) + '" data-toc-sub="' + h.esc(p.toc || p.name) + '"><div class="project-head"' + h.reveal('project') + '><h3>' + h.esc(p.name) + '</h3>' + (p.company ? '<span class="company">' + h.esc(p.company) + '</span>' + (p.period ? '<span class="period">' + h.esc(p.period) + '</span>' : '') + (p.status ? '<span class="status' + (p.status.muted ? ' is-muted' : '') + '">' + h.esc(p.status.label) + '</span>' : '') : '') + '</div><div class="project-summary-grid"><div class="project-summary-copy"><p class="project-role">' + h.esc(p.role || '') + '</p><p class="project-desc">' + h.esc(p.desc || '') + '</p>' + h.chips(p.tech) + '<a class="project-shortcut" href="' + h.esc(p.href) + '">상세 페이지 바로가기 <span aria-hidden="true">↗</span></a></div>' + preview + '</div></article>';
+      return '<article class="project project-summary" id="' + h.esc(p.id) + '" data-toc-sub="' + h.esc(p.toc || p.name) + '"><div class="project-head"' + h.reveal('project') + '><h3>' + h.esc(p.name) + '</h3>' + (p.company ? '<span class="company">' + h.esc(p.company) + '</span>' : '') + (p.period ? '<span class="period">' + h.esc(p.period) + '</span>' : '') + (p.status ? '<span class="status' + (p.status.muted ? ' is-muted' : '') + '">' + h.esc(p.status.label) + '</span>' : '') + '</div><div class="project-summary-grid"><div class="project-summary-copy"><p class="project-role">' + h.esc(p.role || '') + '</p><p class="project-desc">' + h.esc(p.desc || '') + '</p>' + h.chips(p.tech) + '<a class="project-shortcut" href="' + h.esc(p.href) + '">상세 페이지 바로가기 <span aria-hidden="true">↗</span></a></div>' + preview + '</div></article>';
     }).join(''));
+  });
+  /* 그 밖의 프로젝트: 한 줄 목록 (행 전체가 상세 페이지 링크) */
+  App.register('project-list', function (s, h) {
+    return h.section(s, '<ul class="more-list"' + h.stagger(60) + '>' + (s.items || []).map(function (p) {
+      return '<li class="more-item"' + h.reveal('item') + '><a class="more-link" href="' + h.esc(p.href || '#') + '">' +
+        '<div class="more-head"><h3>' + h.esc(p.name) + '</h3>' + (p.company ? '<span class="company">' + h.esc(p.company) + '</span>' : '') + '</div>' +
+        (p.role ? '<p class="more-role">' + h.esc(p.role) + '</p>' : '') +
+        (p.desc ? '<p class="more-desc">' + h.esc(p.desc) + '</p>' : '') +
+        '<span class="more-go">상세 보기 <span aria-hidden="true">↗</span></span>' +
+      '</a></li>';
+    }).join('') + '</ul>');
   });
   var dialog = document.createElement('dialog');
   dialog.className = 'preview-dialog';

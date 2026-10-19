@@ -93,6 +93,7 @@
           (it.tenure ? '<span class="tenure">' + esc(it.tenure) + '</span>' : '') +
         '</div>' +
         (it.desc ? '<p class="entry-desc">' + esc(it.desc) + '</p>' : '') +
+        (it.points && it.points.length ? '<ul class="case-steps entry-points">' + list(it.points, function (t) { return '<li>' + esc(t) + '</li>'; }) + '</ul>' : '') +
       '</div>';
     }));
   });
@@ -170,7 +171,8 @@
 
   register('links', function (s) {
     return section(s, list(s.items, function (it) {
-      return '<a class="link-card" href="' + esc(it.href || '#') + '" target="_blank" rel="noopener"' + reveal('item') + '>' +
+      var external = /^https?:\/\//i.test(it.href || '');
+      return '<a class="link-card" href="' + esc(it.href || '#') + '"' + (external ? ' target="_blank" rel="noopener"' : '') + reveal('item') + '>' +
         (it.kicker ? '<p class="link-kicker">' + esc(it.kicker) + '</p>' : '') +
         '<p class="link-title">' + esc(it.title) + '<span class="link-arrow" aria-hidden="true">↗</span></p>' +
       '</a>';
@@ -328,6 +330,15 @@
     initExpandAll(app);
     global.Motion.enhanceDetails(app);
     global.Motion.observe(app);
+    scrollToHash();
+  }
+
+  /* 내용이 JS로 그려지므로, index.html#projects 같은 주소는 렌더 뒤에 직접 이동 */
+  function scrollToHash() {
+    if (!location.hash) return;
+    var target = null;
+    try { target = document.getElementById(decodeURIComponent(location.hash.slice(1))); } catch (e) {}
+    if (target) target.scrollIntoView({ behavior: 'instant', block: 'start' });
   }
 
   global.App = { register: register, render: render, helpers: h, motion: motionMap };

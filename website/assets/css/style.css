@@ -606,3 +606,5 @@ button { font-family: inherit; }
   .project-head { break-after: avoid; }
   * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }
+/* 경력·교육·활동 항목의 세부 내용 */
+.entry-points { margin-top: 8px; padding-left: 0; }
